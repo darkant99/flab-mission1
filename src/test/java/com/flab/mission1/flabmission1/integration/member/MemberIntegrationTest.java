@@ -21,33 +21,32 @@ public class MemberIntegrationTest {
     int port;
 
     private ValidatableResponse latestThen;
-    private String savedMemberId;
 
     @BeforeEach
     void setUp() {
         RestAssured.port = port;
     }
 
-    @DisplayName("간단 Crud Test")
+    @DisplayName("Member Crud 인수 테스트 (통합)")
     @Test
     void 테스트_통합() {
         등록("김재원", 26);
-        _반환된_ID값_저장();
+        String memberId = 반환된_ID();
 
         // 중복 이름에 대한 실패
         등록("김재원", 50);
         요청_실패();
 
-        수정(savedMemberId, 27);
+        수정(memberId, 27);
         요청_성공();
 
-        조회(savedMemberId);
+        조회(memberId);
         유저_정보_확인("김재원", 27);
 
-        삭제(savedMemberId);
+        삭제(memberId);
         요청_성공();
 
-        조회(savedMemberId);
+        조회(memberId);
         요청_실패();
     }
 
@@ -58,14 +57,6 @@ public class MemberIntegrationTest {
             .when()
             .post("/api/v1/members")
             .then();
-    }
-
-    void _반환된_ID값_저장() {
-        String location = latestThen.extract()
-            .header("location");
-        savedMemberId = location.substring(
-            location.lastIndexOf("/") + 1
-        );
     }
 
     void 삭제(String id) {
@@ -106,6 +97,15 @@ public class MemberIntegrationTest {
         assertThat(statusCode + "")
             .withFailMessage("예상과 다른 Status Code 조회됨 // " + statusCode)
             .startsWith("4");
+    }
+
+
+    String 반환된_ID() {
+        String location = latestThen.extract()
+            .header("location");
+        return location.substring(
+            location.lastIndexOf("/") + 1
+        );
     }
 
     void 유저_정보_확인(String expertName, int expertAge) {
