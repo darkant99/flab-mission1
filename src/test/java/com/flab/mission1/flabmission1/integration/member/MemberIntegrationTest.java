@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.flab.mission1.member.service.dto.request.MemberRequest;
 import com.flab.mission1.member.service.dto.response.MemberResponse;
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -53,6 +54,7 @@ public class MemberIntegrationTest {
     void 등록(String name, int age) {
         latestThen = RestAssured
             .given()
+            .contentType(ContentType.JSON)
             .body(new MemberRequest(name, age))
             .when()
             .post("/api/v1/members")
@@ -70,6 +72,7 @@ public class MemberIntegrationTest {
     void 수정(String id, String name, int age) {
         latestThen = RestAssured
             .given()
+            .contentType(ContentType.JSON)
             .body(new MemberRequest(name, age))
             .when()
             .put("/api/v1/members/{id}", id)
