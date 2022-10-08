@@ -2,8 +2,8 @@ package com.flab.mission1.flabmission1.integration.member;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.flab.mission1.member.service.dto.request.MemberRequest;
-import com.flab.mission1.member.service.dto.response.MemberResponse;
+import com.flab.mission1.member.application.dto.request.MemberRequest;
+import com.flab.mission1.member.application.dto.response.MemberResponse;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;

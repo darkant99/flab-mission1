@@ -1,4 +1,4 @@
-package com.flab.mission1.member.service.dto.response;
+package com.flab.mission1.member.application.dto.response;
 
 import com.flab.mission1.member.domain.Member;
 import lombok.AllArgsConstructor;

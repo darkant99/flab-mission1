@@ -1,9 +1,9 @@
 package com.flab.mission1.member.presentation;
 
-import com.flab.mission1.member.service.MemberCommandService;
-import com.flab.mission1.member.service.MemberQueryService;
-import com.flab.mission1.member.service.dto.request.MemberRequest;
-import com.flab.mission1.member.service.dto.response.MemberResponse;
+import com.flab.mission1.member.application.MemberCommandService;
+import com.flab.mission1.member.application.MemberQueryService;
+import com.flab.mission1.member.application.dto.request.MemberRequest;
+import com.flab.mission1.member.application.dto.response.MemberResponse;
 import java.net.URI;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

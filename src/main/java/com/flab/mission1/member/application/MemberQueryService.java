@@ -1,9 +1,9 @@
-package com.flab.mission1.member.service;
+package com.flab.mission1.member.application;
 
 import com.flab.mission1.error.exception.MemberNotFoundException;
 import com.flab.mission1.member.domain.Member;
 import com.flab.mission1.member.domain.repository.MemberRepository;
-import com.flab.mission1.member.service.dto.response.MemberResponse;
+import com.flab.mission1.member.application.dto.response.MemberResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

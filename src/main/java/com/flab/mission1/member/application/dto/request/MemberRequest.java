@@ -1,4 +1,4 @@
-package com.flab.mission1.member.service.dto.request;
+package com.flab.mission1.member.application.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
