@@ -37,11 +37,11 @@ public class MemberIntegrationTest {
         등록("김재원", 50);
         요청_실패();
 
-        수정(memberId, 27);
+        수정(memberId, "김재원2", 27);
         요청_성공();
 
         조회(memberId);
-        유저_정보_확인("김재원", 27);
+        유저_정보_확인("김재원2", 27);
 
         삭제(memberId);
         요청_성공();
@@ -67,12 +67,12 @@ public class MemberIntegrationTest {
             .statusCode(HttpStatus.NO_CONTENT.value());
     }
 
-    void 수정(String id, int age) {
+    void 수정(String id, String name, int age) {
         latestThen = RestAssured
             .given()
-            .body(new MemberRequest(null, age))
+            .body(new MemberRequest(name, age))
             .when()
-            .patch("/api/v1/members/{id}/age", id)
+            .put("/api/v1/members/{id}", id)
             .then();
     }
 
